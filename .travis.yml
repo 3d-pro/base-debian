@@ -3,6 +3,7 @@ services:
    - docker
 
 script:
-   - docker pull ubuntu:14.04
+   - docker pull debian:jessie
    - docker build -t 3dpro/base-image .
+   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
    - docker push 3dpro/base-image
