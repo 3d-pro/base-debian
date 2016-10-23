@@ -4,8 +4,8 @@ services:
 
 script:
    - docker build -t 3dpro/base-debian .
-   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+   - docker -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
    - docker push 3dpro/base-debian
 
-after_success:
-   "curl -s -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Travis-API-Version: 3' -H 'Authorization: token $TRAVIS_TOKEN' -d '$TRAVIS_POST_BODY' https://api.travis-ci.org/repo/3d-pro%2Fopenssh/requests"
+#after_success:
+#   "curl -s -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Travis-API-Version: 3' -H 'Authorization: token $TRAVIS_TOKEN' -d '$TRAVIS_POST_BODY' https://api.travis-ci.org/repo/3d-pro%2Fopenssh/requests"
