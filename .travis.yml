@@ -4,7 +4,7 @@ services:
 
 script:
    - docker build -t 3dpro/base-debian .
-   - docker -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
    - docker push 3dpro/base-debian
 
 #after_success:
