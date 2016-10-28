@@ -8,4 +8,4 @@ script:
    - docker push 3dpro/base-debian
 
 after_success:
-   - "curl -s -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Travis-API-Version: 3' -H 'Authorization: token $TRAVIS_TOKEN' -d '"request": {"branch": "master"}'  \"https://api.travis-ci.org/repo/3d-pro%2Fopenssh/requests\""
+   - ./trigger-openssh.sh $TRAVIS_TOKEN
