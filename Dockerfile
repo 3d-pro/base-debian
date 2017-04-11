@@ -5,7 +5,8 @@ ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 HOME=/root DEBIAN_FRON
 ADD build-files /build-files
 RUN mv /usr/bin/ischroot /usr/bin/ischroot.original && \
     mv /build-files/ischroot /usr/bin/ischroot && \
-    echo "Asia/Bangkok" > /etc/timezone && \
+    rm /etc/localtime && \
+    ln -s /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     apt-get update && \
     apt-get dist-upgrade -y && \
