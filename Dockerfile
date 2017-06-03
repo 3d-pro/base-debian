@@ -1,15 +1,12 @@
 FROM debian:experimental
 
-ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 HOME=/root DEBIAN_FRONTEND=noninteractive FAKE_CHROOT=1 INITRD=No
-ADD build-files /build-files
-RUN mv /usr/bin/ischroot /usr/bin/ischroot.original && \
-    mv /build-files/ischroot /usr/bin/ischroot && \
-    rm /etc/localtime && \
+ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 HOME=/root DEBIAN_FRONTEND=noninteractive INITRD=No TERM=xterm
+RUN rm /etc/localtime && \
     ln -s /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     apt-get update && \
     apt-get dist-upgrade -y && \
-    apt-get install wget curl locales logrotate rsyslog gnupg -y && \
+    apt-get install procps wget curl locales logrotate rsyslog gnupg -y && \
     locale-gen en_US.UTF-8 && \
     dpkg-reconfigure -f noninteractive tzdata && \
     update-locale LANG=en_US.UTF-8 && \
@@ -23,4 +20,4 @@ RUN mv /usr/bin/ischroot /usr/bin/ischroot.original && \
     service rsyslog start && \
     service rsyslog stop && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/11proxy /build-files
+    rm -rf /var/lib/apt/lists/* /etc/apt/apt.conf.d/11proxy
