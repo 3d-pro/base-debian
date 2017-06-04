@@ -1,7 +1,8 @@
 FROM debian:experimental
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 HOME=/root DEBIAN_FRONTEND=noninteractive INITRD=No TERM=xterm
-RUN rm /etc/localtime && \
+RUN echo 'Acquire::http::Proxy "http://172.17.0.1:3142";' > /etc/apt/apt.conf.d/11proxy && \
+    rm /etc/localtime && \
     ln -s /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     apt-get update && \
@@ -10,7 +11,6 @@ RUN rm /etc/localtime && \
     locale-gen en_US.UTF-8 && \
     dpkg-reconfigure -f noninteractive tzdata && \
     update-locale LANG=en_US.UTF-8 && \
-    echo 'Acquire::http::Proxy "http://172.17.0.1:3142";' > /etc/apt/apt.conf.d/11proxy && \
     apt-get -y autoremove && \
     sed -i '/^weekly/a \dateext\ndateformat .%Y%m%d' /etc/logrotate.conf && \
     sed -i 's/\trotate .*/\trotate 365/g' /etc/logrotate.d/rsyslog && \
