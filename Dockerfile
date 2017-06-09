@@ -1,8 +1,7 @@
 FROM debian:experimental
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 HOME=/root DEBIAN_FRONTEND=noninteractive INITRD=No TERM=xterm
-RUN echo 'Acquire::http::Proxy "http://172.17.0.1:3142";' > /etc/apt/apt.conf.d/11proxy && \
-    rm /etc/localtime && \
+RUN rm /etc/localtime && \
     ln -s /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     apt-get update && \
