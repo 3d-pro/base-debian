@@ -1,4 +1,4 @@
-FROM debian:experimental
+FROM debian:buster
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8 HOME=/root DEBIAN_FRONTEND=noninteractive INITRD=No TERM=xterm
 RUN rm /etc/localtime && \
