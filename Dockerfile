@@ -6,7 +6,7 @@ RUN rm /etc/localtime && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     apt-get update && \
     apt-get dist-upgrade -y && \
-    apt-get install procps wget curl locales logrotate rsyslog gnupg -y && \
+    apt-get install telnet dnsutils nmap procps wget curl locales logrotate rsyslog gnupg -y && \
     locale-gen en_US.UTF-8 && \
     dpkg-reconfigure -f noninteractive tzdata && \
     update-locale LANG=en_US.UTF-8 && \
