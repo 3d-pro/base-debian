@@ -3,8 +3,8 @@ services:
    - docker
 
 script:
-   - docker build -t 3dpro/base-debian .
    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+   - docker build -t 3dpro/base-debian .
    - docker push 3dpro/base-debian
 
 after_success:
