@@ -31,4 +31,4 @@ jobs:
       # Push the Docker image to Image Registry
       - name: Publish
         run: |-
-          docker push "$DOCKER_REGISTRY_URL/$PROJECT_NAME/$IMAGE_NAME"
+          docker push "$DOCKER_REGISTRY_URL/$IMAGE_NAME"
