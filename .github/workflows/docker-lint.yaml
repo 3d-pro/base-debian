@@ -1,9 +1,6 @@
 name: Lint Dockerfile
 
-on:
-  pull_request:
-    branches:
-      - 'feature/**'
+on: pull_request
 
 jobs:
   dockerfile-lint:
