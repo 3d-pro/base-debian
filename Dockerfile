@@ -6,7 +6,7 @@ RUN rm /etc/localtime && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     apt-get update && \
     apt-get upgrade -y && \
-    apt-get install --no-install-recommends -y telnet iputils-ping dnsutils mtr nmap procps iproute2 wget curl locales logrotate rsyslog gnupg ca-certificates && \
+    apt-get install --no-install-recommends -y traceroute tcpdump telnet iputils-ping dnsutils mtr nmap procps iproute2 wget curl locales logrotate rsyslog gnupg ca-certificates && \
     locale-gen en_US.UTF-8 && \
     dpkg-reconfigure -f noninteractive tzdata && \
     update-locale LANG=en_US.UTF-8 && \
